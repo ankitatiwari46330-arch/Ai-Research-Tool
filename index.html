@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">       
+
+<head>
+    <meta charset="UTF-8">
+    <title>NeuroQuest</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="nav-left">
+            <button id="toggleSidebarBtn" onclick="toggleSidebar()"  title="Close sidebar">
+    ☰
+</button>
+            <img src="image6.png" class="logo">
+            <span class="project-name">NeuroQuest</span>
+        </div>
+
+        <div class="nav-right">
+            <!-- BEFORE LOGIN -->
+            <div id="authButtons">
+                <button class="btn login" onclick="openLogin()">Login</button>
+                <button class="btn signup" onclick="openSignup()">Sign Up</button>
+            </div>
+
+            <!-- AFTER LOGIN -->
+            <div id="profileSection" style="display:none; position: relative;">
+                <button class="btn" onclick="toggleProfile()">👤 <span id="profileName"></span></button>
+
+                <div id="profileDropdown"
+                    style="display:none; position:absolute; right:0; top:40px; background:#1e293b; padding:10px; border-radius:8px; width:200px;">
+                    <p><b>Name:</b> <span id="userName"></span></p>
+                    <p><b>Email:</b> <span id="userEmail"></span></p>
+                    <p><b>Password:</b> <span id="userPassword"></span></p>
+                    <button onclick="logout()" style="width:100%; margin-top:10px;">Logout</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2>Login</h2>
+
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SIGNUP MODAL -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSignup()">&times;</span>
+            <h2>Create Account</h2>
+
+            <form id="signupForm">
+                <input type="text" id="firstName" placeholder="First Name" required>
+                <input type="text" id="lastName" placeholder="Last Name" required>
+                <input type="email" id="signupEmail" placeholder="Email" required>
+                <input type="password" id="signupPassword" placeholder="Password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+                <button type="submit">Get Started</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="sidebar">
+            <!-- NEW CHAT BUTTON -->
+            <button onclick="newChat()" style="margin-bottom:10px;width: 100%;">+ New Chat</button>
+            <button onclick="deleteHistory()" style="margin-bottom:10px;width:100%; background:red; color:white;">
+                🗑 Delete History
+            </button>
+            <input type="text" id="searchHistory" placeholder="Search history...">
+            <div id="historyList"></div>
+        </div>
+
+        <div class="container">
+
+            <h1 id="welcomeText">Hello, how can I help you? 👋</h1>
+
+            <!-- CHAT BOX -->
+            <div id="chatBox"></div>
+
+            <div class="s">
+                <input type="text" id="query" placeholder="Enter your research topic...">
+                <button onclick="searchAI()">Search</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
